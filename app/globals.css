@@ -1,26 +1,361 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+/* @custom-variant dark (prefers-color-scheme: dark); */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Updated to a fresh blue-gray color scheme instead of tan */
+  --background: oklch(0.98 0.01 220); /* Cool light blue-gray background */
+  --foreground: oklch(0.15 0.02 220); /* Dark blue-gray for text */
+  --card: oklch(1 0 0); /* White for cards */
+  --card-foreground: oklch(0.15 0.02 220); /* Dark blue-gray text on cards */
+  --popover: oklch(1 0 0); /* White for popovers */
+  --popover-foreground: oklch(0.15 0.02 220); /* Dark blue-gray text in popovers */
+  --primary: oklch(0.7725 0.0559 35.39);        /* warm terracotta brown */
+  --primary-foreground: oklch(0.18 0.04 35.39); /* deep earthy brown for contrast */
+  --secondary: oklch(0.9627 0.0401 94.71);      /* muted ochre */
+  --secondary-foreground: oklch(0.25 0.03 94.71); /* dark brownish-ochre */
+  --muted: oklch(0.7378 0.0223 178.12);         /* cool muted teal/blue */
+  --muted-foreground: oklch(0.20 0.02 178.12);  /* dark navy-teal */
+  --accent: oklch(0.8803 0.0246 117.09);        /* soft greenish accent */
+  --accent-foreground: oklch(0.18 0.02 117.09); /* deep forest green */
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.88 0.02 220); /* Light blue-gray border */
+  --input: oklch(1 0 0); /* White for input fields */
+  --ring: oklch(0.55 0.12 240); /* Blue focus ring */
+  --chart-1: oklch(0.55 0.12 240); /* Rich blue */
+  --chart-2: oklch(0.75 0.08 180); /* Soft teal */
+  --chart-3: oklch(0.65 0.15 280); /* Purple */
+  --chart-4: oklch(0.6 0.1 200); /* Blue-teal */
+  --chart-5: oklch(0.7 0.05 260); /* Light purple */
+  --radius: 0.5rem;
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.15 0.02 220);
+  --sidebar-primary: oklch(0.55 0.12 240);
+  --sidebar-primary-foreground: oklch(0.98 0.01 220);
+  --sidebar-accent: oklch(0.75 0.08 180);
+  --sidebar-accent-foreground: oklch(0.15 0.02 220);
+  --sidebar-border: oklch(0.88 0.02 220);
+  --sidebar-ring: oklch(0.55 0.12 240);
+  --font-source-sans: "Source Sans Pro", sans-serif;
+  --font-playfair: "Playfair Display", serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+
+    /* Updated dark mode colors to complement the new blue-gray scheme */ 
+    --background: oklch(0.12 0.01 250);
+    --foreground: oklch(0.92 0.01 220);
+    
+    --card: oklch(0.12 0.01 220); /* Dark blue-gray card background */
+    
+    --card-foreground: oklch(0.95 0.01 220); /* Light card text */
+    
+    --popover: oklch(0.12 0.01 220);
+    
+    --popover-foreground: oklch(0.95 0.01 220);
+    
+    --primary: oklch(0.55 0.0559 35.39);       /* terracotta brown */
+    --primary-foreground: oklch(0.95 0.02 35.39); /* very light version of same hue */
+    
+    --secondary: oklch(0.72 0.0401 94.71);     /* muted ochre */
+    --secondary-foreground: oklch(0.12 0.02 94.71); /* very dark muted brown */
+    
+    --muted: oklch(0.55 0.0223 178.12);
+    --muted-foreground: oklch(0.92 0.01 220);
+    
+    --accent: oklch(0.65 0.0246 117.09);
+    --accent-foreground: oklch(0.96 0.01 220);
+    
+    --destructive: oklch(0.396 0.141 25.723);
+    
+    --destructive-foreground: oklch(0.637 0.237 25.331);
+    
+    --border: oklch(0.22 0.02 220); /* Dark blue-gray border */
+    
+    --input: oklch(0.15 0.01 220); /* Dark input background */
+    
+    --ring: oklch(0.65 0.12 240); /* Bright blue focus ring */
+    
+    --chart-1: oklch(0.65 0.12 240);
+    
+    --chart-2: oklch(0.55 0.08 180);
+    
+    --chart-3: oklch(0.75 0.15 280);
+    
+    --chart-4: oklch(0.7 0.1 200);
+    
+    --chart-5: oklch(0.8 0.05 260);
+    
+    --sidebar: oklch(0.12 0.01 220);
+    
+    --sidebar-foreground: oklch(0.95 0.01 220);
+    
+    --sidebar-primary: oklch(0.65 0.12 240);
+    
+    --sidebar-primary-foreground: oklch(0.08 0.01 220);
+    
+    --sidebar-accent: oklch(0.45 0.08 180);
+    
+    --sidebar-accent-foreground: oklch(0.95 0.01 220);
+    --sidebar-border: oklch(0.22 0.02 220);
+    --sidebar-ring: oklch(0.65 0.12 240);
+    }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-sans: var(--font-source-sans);
+  --font-serif: var(--font-playfair);
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Updated gradient colors to match new blue-gray scheme */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at 25% 25%, rgba(135, 206, 235, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(147, 112, 219, 0.08) 0%, transparent 50%);
+    background-size: 400px 400px, 300px 300px;
+    background-position: 0 0, 100px 100px;
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Updated dark mode gradients */
+  @media (prefers-color-scheme: dark) {
+    body::before {
+      background-image: radial-gradient(circle at 25% 25%, rgba(100, 149, 237, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(138, 43, 226, 0.06) 0%, transparent 50%);
+      opacity: 0.4;
+    }
+  }
+
+  /* Added film grain texture */
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Adjusted film grain for dark mode */
+  @media (prefers-color-scheme: dark) {
+    body::after {
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilterDark'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilterDark)' opacity='0.05'/%3E%3C/svg%3E");
+    }
+  }
+
+  /* Added blob animations for lava lamp effect */
+  @keyframes blob {
+    0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+    100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+  }
+
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
+  .animation-delay-6000 {
+    animation-delay: 6s;
+  }
+
+  /* Added subtle grainy texture to cards */
+  .card-texture {
+    position: relative;
+  }
+
+  .card-texture::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='cardNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23cardNoise)' opacity='0.02'/%3E%3C/svg%3E");
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .card-texture > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Added section separators for better visual hierarchy */
+  .section-separator {
+    position: relative;
+  }
+
+  .section-separator::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    opacity: 0.6;
+  }
+
+  .section-divider {
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    height: 1px;
+    margin: 4rem 0;
+    opacity: 0.5;
+  }
+
+  /* Added grainy-texture class for enhanced film grain effect */
+  .grainy-texture {
+    position: relative;
+  }
+
+  .grainy-texture::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grainTexture'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grainTexture)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .grainy-texture::before {
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grainTextureDark'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grainTextureDark)' opacity='0.06'/%3E%3C/svg%3E");
+    }
+  }
+
+  .grainy-texture > * {
+    position: relative;
+    z-index: 1;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom white-outline button */
+/* .btn-outline-white {
+  @apply border border-white text-white;
+}
+
+.btn-outline-white:hover {
+  @apply bg-foreground text-background;
+} */
+
+.btn-background {
+  @apply bg-background/60 text-foreground border-foreground/10
+}
+
+.btn-background:hover {
+  @apply bg-foreground text-background border-foreground/10
+}
+
+.btn-foreground {
+  @apply bg-foreground text-background border-background/10
+}
+
+.btn-foreground:hover {
+  @apply bg-background/60 text-foreground border-foreground/10
+}
+
+.btn-nav {
+  @apply bg-background text-foreground border-foreground
+}
+
+.btn-nav:hover {
+  @apply bg-foreground text-background border-background
+}
+
+/* Glow effect utility */
+@layer utilities {
+  .btn-glow {
+    @apply transition-all duration-300 ease-in-out transform;
+  }
+
+  .btn-glow:hover {
+    /* Glow shadow only below the button */
+    box-shadow: 0 6px 20px -2px currentColor;
+    transform: scale(1.05);
+  }
+
+  .btn-glow:focus {
+    @apply outline-none ring-2 ring-offset-2;
+    ring-color: currentColor; /* Glow uses the text color */
+  }
 }

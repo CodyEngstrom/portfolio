@@ -1,0 +1,46 @@
+[
+    {
+        "title": "Personal Portfolio Website",
+        "description": "A personal website where I share my projects, photography, and blog, along with fun facts that show my personality and passions.",
+        "tech": ["Next.js", "Typescript"],
+        "github": "https://github.com/CodyEngstrom",
+        "demo": "https://github.com/CodyEngstrom",
+        "image": "/projects/cat_coming_soon_fitted.png",
+        "category": ["Web App"],
+        "date": "2025-09-01",
+        "featured": true
+    },
+    {
+        "title": "Scriptly",
+        "description": "Schedule, run, and organize scripts on your machine. Easily interact with your scripts via the Scriptly Desktop App and keep track of their results with the built in logging capabilities.",
+        "tech": ["Tauri", "React", "Rust", "Python", "SQLite"],
+        "github": "https://github.com/CodyEngstrom",
+        "demo": "https://github.com/CodyEngstrom",
+        "image": "/projects/cat_coming_soon_fitted.png",
+        "category": ["Desktop App", "Module", "API"],
+        "date": "2025-08-01",
+        "featured": true
+    },
+    {
+        "title": "Home Media App",
+        "description": "An all-in-one home media app where users can organize, track, and discover their movies, TV shows, books, comics, and other favorite media",
+        "tech": ["Golang", "Wails", "React","Postgresql", "Redis", "Elasticsearch"],
+        "github": "https://github.com/CodyEngstrom",
+        "demo": "https://github.com/CodyEngstrom",
+        "image": "/projects/cat_coming_soon_fitted.png",
+        "category": ["Web App", "API"],
+        "date": "2025-08-01",
+        "featured": true
+    },
+    {
+        "title": "Gameboy Emulator",
+        "description": "Play all your favorite old school gameboy games on modern hardware with this Gameboy Emulator",
+        "tech": ["Rust", "Winit", "Pixels"],
+        "github": "https://github.com/CodyEngstrom",
+        "demo": "https://github.com/CodyEngstrom",
+        "image": "/projects/cat_coming_soon_fitted.png",
+        "category": ["Emulator", "Desktop App"],
+        "date": "2025-08-01",
+        "featured": true
+    }
+]
