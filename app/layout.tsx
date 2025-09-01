@@ -2,6 +2,8 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Playfair_Display, Source_Sans_3 } from "next/font/google"
 import "./globals.css"
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -31,6 +33,8 @@ export default function RootLayout({
     <html lang="en" className={`${playfair.variable} ${sourceSans.variable} antialiased`} suppressHydrationWarning>
       <body>
         <main>{children}</main>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
