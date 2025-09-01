@@ -7,11 +7,11 @@ export function ConnectSection() {
     return (
         <div className="max-w-4xl mx-auto text-center">
           <h3 className="text-3xl font-serif font-bold text-foreground mb-8">
-            Let's Connect
+            Let&apos;s Connect
           </h3>
           <p className="text-lg text-muted-foreground mb-8">
-            I'm always interested in new opportunities and collaborations. Feel
-            free to reach out if you'd like to work together!
+            I&apos;m always interested in new opportunities and collaborations. Feel
+            free to reach out if you&apos;d like to work together!
           </p>
           <div className="flex justify-center gap-6">
             <Button

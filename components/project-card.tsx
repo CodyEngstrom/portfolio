@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Github, ExternalLink, Code, Star } from "lucide-react";
+import Image from "next/image";
 
 interface Project {
   title: string;
@@ -45,9 +46,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow card-texture flex flex-col h-full">
       <div className="aspect-video overflow-hidden relative">
-        <img
+        <Image
           src={project.image || "/placeholder.svg"}
           alt={project.title}
+          fill
           className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
         />
         {project.featured && (

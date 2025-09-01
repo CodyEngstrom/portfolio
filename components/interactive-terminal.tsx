@@ -4,6 +4,7 @@ import { contactLinks, skills } from "@/lib/constants";
 import type React from "react";
 import { useState, useEffect, useRef, type JSX } from "react";
 import projects from "@/public/projects/projects.json";
+import Image from "next/image";
 
 export function InteractiveTerminal() {
   const [input, setInput] = useState("");
@@ -21,7 +22,6 @@ export function InteractiveTerminal() {
       output: `drwxr-xr-x  ${skills.join(" • ")}`,
     },
   ]);
-  const [currentLine, setCurrentLine] = useState(0);
   const [currentTheme, setCurrentTheme] = useState<
     "mac" | "windows" | "ubuntu"
   >("mac");
@@ -132,17 +132,19 @@ export function InteractiveTerminal() {
           const catOutput = (
             <div className="space-y-2">
               <div>🐱 Random cat incoming...</div>
-              <img
-                src={catImageUrl || "/placeholder.svg"}
-                alt="Random cat"
-                className="max-w-full h-32 object-cover rounded border border-current/20"
-                onError={(e) => {
-                  e.currentTarget.style.display = "none";
-                  e.currentTarget.nextElementSibling!.textContent =
-                    "😿 Failed to load cat image";
-                }}
-              />
-              <div></div>
+              <div className="relative w-full h-32 max-w-full">
+                <Image
+                  src={catImageUrl || "/placeholder.svg"}
+                  alt="Random cat"
+                  fill
+                  className="object-contain object-left rounded border border-current/20"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                    e.currentTarget.nextElementSibling!.textContent =
+                      "😿 Failed to load cat image";
+                  }}
+                />
+              </div>
             </div>
           );
           setHistory((prev) => [
@@ -155,7 +157,7 @@ export function InteractiveTerminal() {
             { command: input, output: "😿 No cats found. Try again!" },
           ]);
         }
-      } catch (error) {
+      } catch {
         setHistory((prev) => [
           ...prev,
           {
@@ -165,7 +167,6 @@ export function InteractiveTerminal() {
         ]);
       }
       setInput("");
-      setCurrentLine((prev) => prev + 1);
       return;
     }
 
@@ -199,7 +200,7 @@ export function InteractiveTerminal() {
               />
             </div>
             <div className="text-xs opacity-75">
-              ♪ Use 'stop' to remove player
+              ♪ Use &apos;stop&apos; to remove player
             </div>
           </div>
         );
@@ -211,7 +212,6 @@ export function InteractiveTerminal() {
         ]);
       }
       setInput("");
-      setCurrentLine((prev) => prev + 1);
       return;
     }
 
@@ -240,7 +240,6 @@ export function InteractiveTerminal() {
         ]);
       }
       setInput("");
-      setCurrentLine((prev) => prev + 1);
       return;
     }
 
@@ -256,7 +255,6 @@ export function InteractiveTerminal() {
     }
 
     setInput("");
-    setCurrentLine((prev) => prev + 1);
   };
 
   useEffect(() => {
