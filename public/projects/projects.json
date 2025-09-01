@@ -3,7 +3,7 @@
         "title": "Personal Portfolio Website",
         "description": "A personal website where I share my projects, photography, and blog, along with fun facts that show my personality and passions.",
         "tech": ["Next.js", "Typescript"],
-        "github": "https://github.com/CodyEngstrom",
+        "github": "https://github.com/CodyEngstrom/portfolio/tree/main",
         "demo": "https://github.com/CodyEngstrom",
         "image": "/projects/cat_coming_soon_fitted.png",
         "category": ["Web App"],
